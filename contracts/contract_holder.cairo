@@ -28,23 +28,16 @@ func contract_deposit{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_ch
         assert asserted = 1
     end
 
-    let (contract_address) = get_contract_address()
+    let (local contract_address) = get_contract_address()
     let (local contract_account) = contract_owner_account.read()
 
     IERC20.transferFrom(
         contract_address=token_address,
         sender=sender_account,
-        recipient=contract_account,
+        recipient=contract_address,
         amount=deposit_amount)
 
-    ret
-end
-
-@external
-func approve{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-        spender : felt, amount : Uint256) -> (success : felt):
-    ERC20_approve(spender, amount)
-    return (TRUE)
+    return ()
 end
 
 func _felt_to_Uint256{range_check_ptr}(number : felt) -> (number : Uint256):

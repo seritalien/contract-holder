@@ -67,16 +67,18 @@ async def test_contract_deposit(contract_factory):
 
     deposit_amount = uint(100)
 
+    
+
     # first transfer test token to sender account
     return_bool = await erc20_signer.send_transaction(
         erc20_account,
         erc20.contract_address,
         "transfer",
-        [sender_signer.public_key, *deposit_amount],
+        [sender_account.contract_address, *deposit_amount],
     )
     assert return_bool.result.response == [1]
 
-    execution_info = await erc20.balanceOf(sender_signer.public_key).call()
+    execution_info = await erc20.balanceOf(sender_account.contract_address).call()
     assert execution_info.result.balance == uint(100)
 
     #approve spending
@@ -101,7 +103,7 @@ async def test_contract_deposit(contract_factory):
         contract_holder.contract_address,
         "contract_deposit",
         [
-            sender_signer.public_key,
+            sender_account.contract_address,
             *deposit_amount,
             erc20.contract_address,
         ],
