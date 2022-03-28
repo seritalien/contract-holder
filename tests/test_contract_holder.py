@@ -3,7 +3,7 @@ from starkware.starknet.business_logic.state import BlockInfo
 from starkware.starknet.testing.starknet import Starknet
 from starkware.starkware_utils.error_handling import StarkException
 
-from utils import ERC20_DECIMALS, from_uint, get_erc20_uint_amount
+from utils import  get_erc20_uint_amount
 
 
 USER_DEPOSIT = 512340014.5674987897441654
