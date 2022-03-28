@@ -1,7 +1,7 @@
 from starkware.starknet.public.abi import get_selector_from_name
 from starkware.cairo.common.hash_state import compute_hash_on_elements
 import logging
-from utils.Utilities import str_to_felt
+from test_utils.Utilities import str_to_felt
 
 LOGGER = logging.getLogger(__name__)
 

@@ -7,7 +7,11 @@ from starkware.starkware_utils.error_handling import StarkException
 from starkware.starknet.public.abi import get_selector_from_name
 
 MAX_UINT256 = (2 ** 128 - 1, 2 ** 128 - 1)
+ERC20_DECIMALS = 10**18
 
+
+def get_erc20_uint_amount(user_amount : float):
+    return to_uint(int(user_amount*ERC20_DECIMALS))
 
 def str_to_felt(text):
     b_text = bytes(text, "ascii")
